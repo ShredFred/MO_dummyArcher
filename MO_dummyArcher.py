@@ -8,7 +8,7 @@ class DummyArcher:
         self.bow_dura = 50 #Set durability of ALL your current and spare bows
         self.spare_bow_key = ['ALT+1', 'ALT+2'] #Set keys under which are your spare bows mappes
         self.draw_bow_key = 'x' # Set key which is used to draw a weapon
-        self.sequence_downtime = 5 # Set a time to wait between each attack sequence and equiping arrows sequence
+        self.sequence_downtime = 1 # Set a time to wait between each attack sequence and equiping arrows sequence
 
 
         # !!!! DO NOT EDIT ANYTHING UNDER THIS LINE IF YOU DO NOT PERFECTLY KNOW HOW EVERYTHING WORKS, ONLY CHANGE THE VARIABLES ABOVE TO ALTER THE BEHAVIOR !!! #
