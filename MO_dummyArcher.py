@@ -20,7 +20,7 @@ class DummyArcher:
         self.__current_dura = 0
         self.__current_arrow_count = 1
         self.__current_arrow_stack = 0
-        # self.__current_arrow_stack_use = 1
+        self.__current_arrow_stack_use = 0
         self.__bow_swapped = 0
 
         pb = threading.Thread(target=self.__panicButton)
@@ -43,7 +43,7 @@ class DummyArcher:
     def startShooting(self):
         print('--Starting the attack sequence--')
         self.__current_dura = self.bow_dura
-        while self.__current_arrow_count <= 25:
+        while self.__current_arrow_count <= 20:
             print('--Shooting the dummy--')
             self.__doShoot()
             time.sleep(self.__attack_downtime)
@@ -59,9 +59,10 @@ class DummyArcher:
                 else:
                     pyautogui.press(split_arrow_key[0])
                 time.sleep(self.__equip_arrows_downtime)
-                # self.__current_arrow_stack_use += 1
-                # if self.__current_arrow_stack_use > 4:
-                self.__current_arrow_stack += 1
+                self.__current_arrow_stack_use += 1
+                if self.__current_arrow_stack_use == 5:
+                    self.__current_arrow_stack += 1
+                    self.__current_arrow_stack_use = 0
                 self.__current_arrow_count = 0
                 self.startShooting()
             else:
