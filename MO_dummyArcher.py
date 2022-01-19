@@ -4,8 +4,8 @@ from pynput.keyboard import Key, Listener
 class DummyArcher:
     def __init__(self):
 
-        self.arrow_keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'] #Set the keys under which are arrow stacks mapped (i.e. ALT+1, CTRL+2, SHIFT+3)
-        self.bow_dura = 50 #Set durability of ALL your current and spare bows
+        self.arrow_keys = ['1'] #Set the keys under which are arrow stacks mapped (i.e. ALT+1, CTRL+2, SHIFT+3) '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'
+        self.bow_dura = 1 #Set durability of ALL your current and spare bows
         self.spare_bow_key = ['ALT+1', 'ALT+2'] #Set keys under which are your spare bows mappes
         self.draw_bow_key = 'x' # Set key which is used to draw a weapon
         self.sequence_downtime = 1 # Set a time to wait between each attack sequence and equiping arrows sequence
