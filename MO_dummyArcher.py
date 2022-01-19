@@ -63,7 +63,7 @@ class DummyArcher:
                 if self.__current_arrow_stack_use == 5:
                     self.__current_arrow_stack += 1
                     self.__current_arrow_stack_use = 0
-                self.__current_arrow_count = 0
+                self.__current_arrow_count = 1
                 self.startShooting()
             else:
                 print('--No arrows left, closing the script--')
