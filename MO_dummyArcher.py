@@ -14,9 +14,9 @@ class DummyArcher:
         # !!!! DO NOT EDIT ANYTHING UNDER THIS LINE IF YOU DO NOT PERFECTLY KNOW HOW EVERYTHING WORKS, ONLY CHANGE THE VARIABLES ABOVE TO ALTER THE BEHAVIOR !!! #
 
         self.__dura_loss = 0.1
-        self.__draw_time = 0.2
-        self.__equip_arrows_downtime = 1
-        self.__attack_downtime = 0.7
+        self.__draw_time = 0.4
+        self.__equip_arrows_downtime = 1.5
+        self.__attack_downtime = 0.8
         self.__current_dura = 0
         self.__current_arrow_count = 1
         self.__current_arrow_stack = 0
@@ -90,7 +90,7 @@ class DummyArcher:
                 time.sleep(0.5)
                 pyautogui.press(self.draw_bow_key)
                 time.sleep(1)
-                self.__doShoot()
+                self.startShooting()
             else:
                 print('--All spare bows have already been used, stopping the script--')
                 os._exit(0)
