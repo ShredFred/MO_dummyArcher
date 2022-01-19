@@ -91,6 +91,6 @@ class DummyArcher:
                 time.sleep(1)
                 self.__doShoot()
             else:
-                print('--Spare bow has already been used, stopping the script--')
+                print('--All spare bows have already been used, stopping the script--')
                 os._exit(0)
 DummyArcher()
