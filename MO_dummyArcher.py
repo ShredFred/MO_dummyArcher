@@ -50,7 +50,7 @@ class DummyArcher:
         else:
             print(f'--Sequence is done, preparing to equip another arrow stacks. Wait time is {self.sequence_downtime}. It is safe to close the script now with CTRL+C--')
             time.sleep(self.sequence_downtime)
-            if self.__current_arrow_stack + 1 < len(self.arrow_keys):
+            if self.__current_arrow_stack + 1 <= len(self.arrow_keys):
                 print('--No arrows on the character, equiping another stack--')
                 split_arrow_key = self.arrow_keys[self.__current_arrow_stack].split('+')
                 if len(split_arrow_key) == 2:
