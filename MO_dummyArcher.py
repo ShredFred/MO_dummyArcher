@@ -91,7 +91,6 @@ class DummyArcher:
                 pyautogui.press(self.draw_bow_key)
                 time.sleep(2)
                 self.startShooting()
-                self.__current_dura = self.bow_dura
             else:
                 print('--All spare bows have already been used, stopping the script--')
                 os._exit(0)
