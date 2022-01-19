@@ -42,7 +42,10 @@ class DummyArcher:
 
     def startShooting(self):
         print('--Starting the attack sequence--')
-        self.__current_dura = self.bow_dura
+        if self.__current_dura != 0 and self.__current_dura <= 0.1:
+            self.__doShoot()
+        else:
+            self.__current_dura = self.bow_dura
         while self.__current_arrow_count <= 20:
             print('--Shooting the dummy--')
             self.__doShoot()
@@ -70,8 +73,8 @@ class DummyArcher:
                 os._exit(0)
 
     def __doShoot(self):
-        print(f'--Shooting an arrow number {self.__current_arrow_count}--')
-        if self.__current_dura >= 0.1 and self.__bow_swapped < len(self.spare_bow_key):
+        if self.__current_dura >= 0.1 and self.__bow_swapped <= len(self.spare_bow_key):
+            print(f'--Shooting an arrow number {self.__current_arrow_count}--')
             pyautogui.mouseDown()
             time.sleep(self.__draw_time)
             pyautogui.mouseUp()
@@ -79,18 +82,20 @@ class DummyArcher:
             self.__current_dura -= self.__dura_loss
         else:
             if self.__bow_swapped < len(self.spare_bow_key):
-                print('--Not enough durability, swaping the bow')
+                print(f'--Not enough durability, swaping the bow from slot {self.spare_bow_key[self.__bow_swapped]}--')
                 spare_bow_keys = self.spare_bow_key[self.__bow_swapped].split('+')
                 if len(spare_bow_keys) == 2:
                     with pyautogui.hold(spare_bow_keys[0]):
                         pyautogui.press(spare_bow_keys[1])
                 else:
                     pyautogui.press(spare_bow_keys[0])
-                self.__bow_swapped += 1
                 time.sleep(2)
                 pyautogui.press(self.draw_bow_key)
                 time.sleep(2)
-                self.startShooting()
+                self.__current_dura = self.bow_dura
+                print(f'--Bow from slot {self.spare_bow_key[self.__bow_swapped]} is ready--')
+                self.__bow_swapped += 1
+                return False
             else:
                 print('--All spare bows have already been used, stopping the script--')
                 os._exit(0)
