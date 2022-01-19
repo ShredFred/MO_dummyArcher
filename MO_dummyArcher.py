@@ -15,7 +15,7 @@ class DummyArcher:
 
         self.__dura_loss = 0.1
         self.__draw_time = 0.4
-        self.__equip_arrows_downtime = 1.5
+        self.__equip_arrows_downtime = 1
         self.__attack_downtime = 0.8
         self.__current_dura = 0
         self.__current_arrow_count = 1
@@ -71,7 +71,7 @@ class DummyArcher:
 
     def __doShoot(self):
         print(f'--Shooting an arrow number {self.__current_arrow_count}--')
-        if self.__current_dura > 0 and self.__bow_swapped < len(self.spare_bow_key):
+        if self.__current_dura >= 0.1 and self.__bow_swapped < len(self.spare_bow_key):
             pyautogui.mouseDown()
             time.sleep(self.__draw_time)
             pyautogui.mouseUp()
@@ -87,9 +87,9 @@ class DummyArcher:
                 else:
                     pyautogui.press(spare_bow_keys[0])
                 self.__bow_swapped += 1
-                time.sleep(0.5)
+                time.sleep(2)
                 pyautogui.press(self.draw_bow_key)
-                time.sleep(1)
+                time.sleep(2)
                 self.startShooting()
                 self.__current_dura = self.bow_dura
             else:
