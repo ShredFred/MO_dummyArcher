@@ -5,7 +5,7 @@ class DummyArcher:
     def __init__(self):
 
         self.arrow_keys = ['#', '$', '%', '^', '&', '*', '(', 'ALT+#', 'ALT+$', 'ALT+%', 'ALT+^', 'ALT+&', 'ALT+*', 'ALT+('] #Set the keys under which are arrow stacks mapped
-        self.bow_dura = 1 #Set durability of ALL your current and spare bows
+        self.bow_dura = 5 #Set durability of ALL your current and spare bows
         self.spare_bow_key = ['ALT+!', 'ALT+@'] #Set keys under which are your spare bows mappes
         self.draw_bow_key = 'x' # Set key which is used to draw a weapon
         self.sequence_downtime = 1 # Set a time to wait between each attack sequence and equiping arrows sequence
@@ -44,7 +44,7 @@ class DummyArcher:
         print('--Starting the attack sequence--')
         if self.__current_dura != 0 and self.__current_dura <= 0.1:
             self.__doShoot()
-        else:
+        elif self.__current_dura  <= 0.1:
             self.__current_dura = self.bow_dura
         while self.__current_arrow_count <= 20:
             print('--Shooting the dummy--')
